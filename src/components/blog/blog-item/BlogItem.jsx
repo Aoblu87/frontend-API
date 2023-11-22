@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import BlogAuthor from "../blog-author/BlogAuthor";
 import "./styles.css";
 const BlogItem = (props) => {
-  const { title, cover, _id } = props;
+  const { title, cover, author, _id } = props;
+
   return (
     <Link to={`/blog/${_id}`} className="blog-link">
       <Card className="blog-card">
@@ -13,7 +14,7 @@ const BlogItem = (props) => {
           <Card.Title>{title}</Card.Title>
         </Card.Body>
         <Card.Footer>
-          <BlogAuthor />
+          <BlogAuthor {...author} />
         </Card.Footer>
       </Card>
     </Link>

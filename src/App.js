@@ -1,25 +1,13 @@
-import React, { useEffect } from "react";
-import NavBar from "./components/navbar/BlogNavbar";
+import React from "react";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Footer from "./components/footer/Footer";
-import Home from "./views/home/Home";
+import NavBar from "./components/navbar/BlogNavbar";
 import Blog from "./views/blog/Blog";
+import Home from "./views/home/Home";
 import NewBlogPost from "./views/new/New";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
-  const makeAPICall = async () => {
-    try {
-      const response = await fetch('http://localhost:3001/cors', {mode:'cors'});
-      const data = await response.json();
-      console.log({ data })
-    }
-    catch (e) {
-      console.log(e)
-    }
-  }
-  useEffect(() => {
-    makeAPICall();
-  }, [])
+
 
   return (
     <Router>
