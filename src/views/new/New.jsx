@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from "react";
-import { Button, Container, Form } from "react-bootstrap";
+import { Button, Container, Form, Spinner } from "react-bootstrap";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { Link } from "react-router-dom";
@@ -77,7 +77,11 @@ const NewBlogPost = (props) => {
   //   });
   // };
 
-  return (
+  return loading ? (
+    <div className="d-flex mt-5">
+      <Spinner animation="border" variant="primary" className="mx-auto" />
+    </div>
+  ) : (
     <Container className="new-blog-container">
       <Form className="mt-5" onSubmit={handleSubmit}>
         <Form.Group controlId="blog-form" className="mt-3">

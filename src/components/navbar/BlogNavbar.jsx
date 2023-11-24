@@ -4,7 +4,27 @@ import { Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import "./styles.css";
 const NavBar = (props) => {
-  // const {query, setQuery }= props
+  const { query, setQuery, setResult } = props;
+
+  const handleSearch = async () => {
+    try {
+      const response = await fetch(
+        `http://localhost:3000/blogPosts?title=${query}`
+      );
+
+      if (!response.ok) {
+        throw new Error(`Errore nella richiesta: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log("Risultato della ricerca:", data.blogPosts);
+
+      // Aggiorna lo stato con i risultati della ricerca
+      setResult(data.blogPosts);
+    } catch (errore) {
+      console.error("Errore durante la ricerca:", errore.message);
+    }
+  };
   return (
     <Navbar expand="lg" className="blog-navbar" fixed="top">
       <Container className="justify-content-center justify-content-md-between">
@@ -21,9 +41,11 @@ const NavBar = (props) => {
               placeholder="Search"
               className="me-2"
               aria-label="Search"
-              // onChange={(e) => setQuery(e.target.value)}
+              onChange={(e) => setQuery(e.target.value)}
             />
-            <Button variant="outline-success">Search</Button>
+            <Button variant="outline-success" onClick={handleSearch}>
+              Search
+            </Button>
           </Form>
         </Col>
         <Col xs={5} md={{ span: 1, order: 2 }}>
