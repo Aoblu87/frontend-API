@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import "./styles.css";
 const NavBar = (props) => {
+  // const {query, setQuery }= props
   return (
     <Navbar expand="lg" className="blog-navbar" fixed="top">
       <Container className="justify-content-center justify-content-md-between">
@@ -15,10 +16,12 @@ const NavBar = (props) => {
         <Col md={4} xs={{ span: 12, order: 2 }} className="order-sm-2">
           <Form className="d-flex">
             <Form.Control
-              type="search"
+              type="text"
+              value={query}
               placeholder="Search"
               className="me-2"
               aria-label="Search"
+              // onChange={(e) => setQuery(e.target.value)}
             />
             <Button variant="outline-success">Search</Button>
           </Form>
