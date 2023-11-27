@@ -10,7 +10,7 @@ const Blog = (props) => {
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
 
-  const makeAPICall = async () => {
+  const getPost = async () => {
     try {
       const response = await fetch(`http://localhost:3001/api/blogPosts/${id}`);
 
@@ -28,7 +28,7 @@ const Blog = (props) => {
   };
 
   useEffect(() => {
-    makeAPICall();
+    getPost();
   }, []);
 
   return loading ? (

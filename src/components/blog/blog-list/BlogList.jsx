@@ -3,10 +3,11 @@ import { Col, Row, Spinner } from "react-bootstrap";
 import BlogItem from "../blog-item/BlogItem";
 
 const BlogList = (props) => {
+  const { result } = props;
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const makeAPICall = async () => {
+  const getPosts = async () => {
     try {
       const response = await fetch("http://localhost:3001/api/blogPosts");
 
@@ -24,26 +25,28 @@ const BlogList = (props) => {
   };
 
   useEffect(() => {
-    makeAPICall();
+    getPosts();
   }, []);
-  console.log(posts);
-  return loading ? (
-    <div className="d-flex mt-5">
-      <Spinner animation="border" variant="primary" className="mx-auto" />
-    </div>
-  ) : (
+
+  return (
     <Row>
-      {posts.map((post, i) => (
-        <Col
-          key={`item-${i}`}
-          md={4}
-          style={{
-            marginBottom: 50,
-          }}
-        >
-          <BlogItem key={post.title} {...post} loading={loading} />
-        </Col>
-      ))}
+      {loading ? (
+        <div className="d-flex mt-5">
+          <Spinner animation="border" variant="primary" className="mx-auto" />
+        </div>
+      ) : (
+        posts.map((post, i) => (
+          <Col
+            key={`item-${i}`}
+            md={4}
+            style={{
+              marginBottom: 50,
+            }}
+          >
+            <BlogItem key={post.title} {...post} loading={loading} />
+          </Col>
+        ))
+      )}
     </Row>
   );
 };

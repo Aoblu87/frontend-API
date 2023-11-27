@@ -5,7 +5,7 @@ import logo from "../../assets/logo.png";
 import "./styles.css";
 const NavBar = (props) => {
   const { query, setQuery, setResult } = props;
-
+  console.log(query);
   const handleSearch = async (e) => {
     e.preventDefault();
     try {
@@ -18,10 +18,10 @@ const NavBar = (props) => {
       }
 
       const data = await response.json();
-      console.log("Risultato della ricerca:", data.blogPosts);
+      console.log("Risultato della ricerca:", data);
 
       // Aggiorna lo stato con i risultati della ricerca
-      setResult(data.blogPosts);
+      setResult(data);
     } catch (errore) {
       console.error("Errore durante la ricerca:", errore.message);
     }
@@ -42,7 +42,7 @@ const NavBar = (props) => {
               placeholder="Search"
               className="me-2"
               aria-label="Search"
-              // onChange={(e) => setQuery(e.target.value)}
+              onChange={(e) => setQuery(e.target.value)}
             />
             <Button type="submit" variant="outline-success">
               Search
