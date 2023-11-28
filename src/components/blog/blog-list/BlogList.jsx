@@ -9,7 +9,7 @@ const BlogList = (props) => {
 
   const getPosts = async () => {
     try {
-      const response = await fetch("http://localhost:3001/api/blogPosts");
+      const response = await fetch("http://localhost:3030/api/blogPosts");
 
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);

@@ -12,7 +12,7 @@ const Blog = (props) => {
 
   const getPost = async () => {
     try {
-      const response = await fetch(`http://localhost:3001/api/blogPosts/${id}`);
+      const response = await fetch(`http://localhost:3030/api/blogPosts/${id}`);
 
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);

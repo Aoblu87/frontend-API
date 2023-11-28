@@ -10,7 +10,7 @@ const NavBar = (props) => {
     e.preventDefault();
     try {
       const response = await fetch(
-        `http://localhost:3000/blogPosts/?title=${query}`
+        `http://localhost:3030/api/searchPost?title=${query}`
       );
 
       if (!response.ok) {
