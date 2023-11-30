@@ -34,6 +34,18 @@ const BlogList = (props) => {
         <div className="d-flex mt-5">
           <Spinner animation="border" variant="primary" className="mx-auto" />
         </div>
+      ) : result ? (
+        result.map((post, i) => (
+          <Col
+            key={`item-${i}`}
+            md={4}
+            style={{
+              marginBottom: 50,
+            }}
+          >
+            <BlogItem key={post.title} {...post} loading={loading} />{" "}
+          </Col>
+        ))
       ) : (
         posts.map((post, i) => (
           <Col
