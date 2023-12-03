@@ -4,6 +4,7 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { Link } from "react-router-dom";
 import "./styles.css";
+import "react-toastify/dist/ReactToastify.css";
 
 const NewBlogPost = (props) => {
   const [blog, setBlog] = useState();
@@ -37,7 +38,7 @@ const NewBlogPost = (props) => {
     };
 
     try {
-      fetch("http://localhost:3001/api/blogPosts/", {
+      fetch("http://localhost:3030/api/blogPosts/", {
         headers: {
           "Content-Type": "application/json",
         },
